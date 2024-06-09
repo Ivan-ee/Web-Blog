@@ -4,28 +4,13 @@ export default function About() {
       <div className='max-w-2xl mx-auto p-3 text-center'>
         <div>
           <h1 className='text-3xl font font-semibold text-center my-7'>
-            About Sahand' Blog
+            Мой блог
           </h1>
           <div className='text-md text-gray-500 flex flex-col gap-6'>
             <p>
-              Welcome to Sahand's Blog! This blog was created by Sahand Ghavidel
-              as a personal project to share his thoughts and ideas with the
-              world. Sahand is a passionate developer who loves to write about
-              technology, coding, and everything in between.
-            </p>
-
-            <p>
-              On this blog, you'll find weekly articles and tutorials on topics
-              such as web development, software engineering, and programming
-              languages. Sahand is always learning and exploring new
-              technologies, so be sure to check back often for new content!
-            </p>
-
-            <p>
-              We encourage you to leave comments on our posts and engage with
-              other readers. You can like other people's comments and reply to
-              them as well. We believe that a community of learners can help
-              each other grow and improve.
+              Добро пожаловать на мой проект по вебу! Он был создан с целью, но главное с любовью.
+              Трижды переделывал его, хотел сделать лучше всех, но и так неплохо получилось.
+              Было много боли, особенно по фронту, ух как я не люблю его. И зачем спрашивается только полез...
             </p>
           </div>
         </div>

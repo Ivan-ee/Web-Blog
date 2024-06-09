@@ -72,7 +72,7 @@ export default function DashboardComp() {
         <div className='flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md'>
           <div className='flex justify-between'>
             <div className=''>
-              <h3 className='text-gray-500 text-md uppercase'>Total Users</h3>
+              <h3 className='text-gray-500 text-md uppercase'>Всего пользователей</h3>
               <p className='text-2xl'>{totalUsers}</p>
             </div>
             <HiOutlineUserGroup className='bg-teal-600  text-white rounded-full text-5xl p-3 shadow-lg' />
@@ -82,14 +82,14 @@ export default function DashboardComp() {
               <HiArrowNarrowUp />
               {lastMonthUsers}
             </span>
-            <div className='text-gray-500'>Last month</div>
+            <div className='text-gray-500'>Последний месяц</div>
           </div>
         </div>
         <div className='flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md'>
           <div className='flex justify-between'>
             <div className=''>
               <h3 className='text-gray-500 text-md uppercase'>
-                Total Comments
+                Всего комментарией
               </h3>
               <p className='text-2xl'>{totalComments}</p>
             </div>
@@ -100,13 +100,13 @@ export default function DashboardComp() {
               <HiArrowNarrowUp />
               {lastMonthComments}
             </span>
-            <div className='text-gray-500'>Last month</div>
+            <div className='text-gray-500'>Последний месяц</div>
           </div>
         </div>
         <div className='flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md'>
           <div className='flex justify-between'>
             <div className=''>
-              <h3 className='text-gray-500 text-md uppercase'>Total Posts</h3>
+              <h3 className='text-gray-500 text-md uppercase'>Всего постов</h3>
               <p className='text-2xl'>{totalPosts}</p>
             </div>
             <HiDocumentText className='bg-lime-600  text-white rounded-full text-5xl p-3 shadow-lg' />
@@ -116,16 +116,16 @@ export default function DashboardComp() {
               <HiArrowNarrowUp />
               {lastMonthPosts}
             </span>
-            <div className='text-gray-500'>Last month</div>
+            <div className='text-gray-500'>Последний месяц</div>
           </div>
         </div>
       </div>
       <div className='flex flex-wrap gap-4 py-3 mx-auto justify-center'>
         <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800'>
           <div className='flex justify-between  p-3 text-sm font-semibold'>
-            <h1 className='text-center p-2'>Recent users</h1>
+            <h1 className='text-center p-2'>Последние пользователи</h1>
             <Button outline gradientDuoTone='purpleToPink'>
-              <Link to={'/dashboard?tab=users'}>See all</Link>
+              <Link to={'/dashboard?tab=users'}>Посмотреть всех</Link>
             </Button>
           </div>
           <Table hoverable>
@@ -152,9 +152,9 @@ export default function DashboardComp() {
         </div>
         <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800'>
           <div className='flex justify-between  p-3 text-sm font-semibold'>
-            <h1 className='text-center p-2'>Recent comments</h1>
+            <h1 className='text-center p-2'>Последние комментарии</h1>
             <Button outline gradientDuoTone='purpleToPink'>
-              <Link to={'/dashboard?tab=comments'}>See all</Link>
+              <Link to={'/dashboard?tab=comments'}>Посмотерть все</Link>
             </Button>
           </div>
           <Table hoverable>
@@ -177,9 +177,9 @@ export default function DashboardComp() {
         </div>
         <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800'>
           <div className='flex justify-between  p-3 text-sm font-semibold'>
-            <h1 className='text-center p-2'>Recent posts</h1>
+            <h1 className='text-center p-2'>Последние посты</h1>
             <Button outline gradientDuoTone='purpleToPink'>
-              <Link to={'/dashboard?tab=posts'}>See all</Link>
+              <Link to={'/dashboard?tab=posts'}>Посмотреть все</Link>
             </Button>
           </div>
           <Table hoverable>
