@@ -26,8 +26,9 @@ router.put('/post/updatepost/:postId/:userId', verifyToken, PostController.updat
 router.put('/user/update/:userId', verifyToken, UserController.update);
 router.delete('/user/delete/:userId', verifyToken, UserController.delete);
 router.post('/user/signout', UserController.signOut);
-router.get('/user/getusers', verifyToken, UserController.getAll);
+router.get('/user/getusers', UserController.getAll);
 router.get('/user/:userId', UserController.getById);
+router.get('/user/setAdmin/:userId', UserController.setAdmin);
 
 router.all('*', (req, res) => {
     res.status(404).json({ message: 'Страница не найдена' });

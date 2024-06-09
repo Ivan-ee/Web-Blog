@@ -64,9 +64,10 @@ const UserController = {
         }
     },
     getAll: async (req, res, next) => {
-        if (!req.user.isAdmin) {
-            return next(errorHandler(403, 'You are not allowed to see all users'));
-        }
+        // if (!req.user.isAdmin) {
+        //     return next(errorHandler(403, 'You are not allowed to see all users'));
+        // }
+
         try {
             const startIndex = parseInt(req.query.startIndex) || 0;
             const limit = parseInt(req.query.limit) || 9;
@@ -111,6 +112,24 @@ const UserController = {
         try {
             await User.findByIdAndDelete(req.params.userId);
             res.status(200).json('User has been deleted');
+        } catch (error) {
+            next(error);
+        }
+    },
+    setAdmin: async (req, res, next) => {
+
+        try{
+            const updatedUser = await User.findByIdAndUpdate(
+                req.params.userId,
+                {
+                    $set: {
+                        isAdmin: true
+                    },
+                },
+                {new: true}
+            );
+
+            res.status(200).json(updatedUser);
         } catch (error) {
             next(error);
         }
