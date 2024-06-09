@@ -30,13 +30,4 @@ router.get('/user/getusers', UserController.getAll);
 router.get('/user/:userId', UserController.getById);
 router.get('/user/setAdmin/:userId', UserController.setAdmin);
 
-router.all('*', (req, res) => {
-    res.status(404).json({ message: 'Страница не найдена' });
-});
-
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-// });
-
-
 module.exports = router;

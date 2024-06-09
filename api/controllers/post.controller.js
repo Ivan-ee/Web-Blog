@@ -4,10 +4,10 @@ const errorHandler = require('../utils/error.js');
 const PostController = {
     create: async (req, res, next) => {
         if (!req.user.isAdmin) {
-            return next(errorHandler(403, 'You are not allowed to create a post'));
+            return next(errorHandler(403, 'У вас нет прав'));
         }
         if (!req.body.title || !req.body.content) {
-            return next(errorHandler(400, 'Please provide all required fields'));
+            return next(errorHandler(400, 'Заполните все поля'));
         }
         const slug = req.body.title
             .split(' ')
@@ -71,23 +71,27 @@ const PostController = {
         }
     },
     delete: async (req, res, next) => {
+        const postId = req.params.postId;
+
         if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-            return next(errorHandler(403, 'You are not allowed to delete this post'));
+            return next(errorHandler(403, 'У вас нет прав'));
         }
         try {
-            await Post.findByIdAndDelete(req.params.postId);
-            res.status(200).json('The post has been deleted');
+            await Post.findByIdAndDelete(postId);
+            res.status(200).json('Пост удален');
         } catch (error) {
             next(error);
         }
     },
     update: async (req, res, next) => {
+        const postId = req.params.postId;
+
         if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-            return next(errorHandler(403, 'You are not allowed to update this post'));
+            return next(errorHandler(403, 'У вас нет прав'));
         }
         try {
             const updatedPost = await Post.findByIdAndUpdate(
-                req.params.postId,
+                postId,
                 {
                     $set: {
                         title: req.body.title,

@@ -10,7 +10,7 @@ dotenv.config();
 mongoose
     .connect('mongodb://admin:123@localhost:27017/mongo?authSource=admin&directConnection=true')
     .then(() => {
-        console.log('MongoDb is connected');
+        console.log('Бд подлючена');
     })
     .catch((err) => {
         console.log(err);
@@ -18,7 +18,7 @@ mongoose
 
 const app = express();
 
-// app.use(cors());
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,14 +26,15 @@ app.use(cookieParser());
 
 app.use('/api', require('./routes'));
 
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+// });
+
 app.listen(3000, () => {
-    console.log('Server is running on port 3000!');
+    console.log('Сервер запущен на порту 3000!');
 });
 
-
-
 app.use(express.static(path.join(__dirname, '/client/dist')));
-
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;

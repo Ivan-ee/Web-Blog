@@ -17,7 +17,7 @@ const AuthController = {
             email === '' ||
             password === ''
         ) {
-            next(errorHandler(400, 'All fields are required'));
+            next(errorHandler(400, 'Не все поля заполнены'));
         }
 
         const hashedPassword = bcryptjs.hashSync(password, 10);
@@ -30,7 +30,7 @@ const AuthController = {
 
         try {
             await newUser.save();
-            res.json('Signup successful');
+            res.json('Регистрация успешна');
         } catch (error) {
             next(error);
         }
@@ -39,31 +39,31 @@ const AuthController = {
         const {email, password} = req.body;
 
         if (!email || !password || email === '' || password === '') {
-            next(errorHandler(400, 'All fields are required'));
+            next(errorHandler(400, 'Не все поля заполнены'));
         }
 
         try {
             const validUser = await User.findOne({email});
             if (!validUser) {
-                return next(errorHandler(404, 'User not found'));
+                return next(errorHandler(404, 'Пользователь не найден'));
             }
             const validPassword = bcryptjs.compareSync(password, validUser.password);
             if (!validPassword) {
-                return next(errorHandler(400, 'Invalid password'));
+                return next(errorHandler(400, 'Пароль неверный'));
             }
             const token = jwt.sign(
                 {id: validUser._id, isAdmin: validUser.isAdmin},
                 JWT_SECRET
             );
 
-            const {password: pass, ...rest} = validUser._doc;
+            const {password: pass, ...data} = validUser;
 
             res
                 .status(200)
                 .cookie('access_token', token, {
                     httpOnly: true,
                 })
-                .json(rest);
+                .json(data);
         } catch (error) {
             next(error);
         }
@@ -77,7 +77,7 @@ const AuthController = {
                     {id: user._id, isAdmin: user.isAdmin},
                     JWT_SECRET
                 );
-                const {password, ...rest} = user._doc;
+                const {password, ...rest} = user;
                 res
                     .status(200)
                     .cookie('access_token', token, {
