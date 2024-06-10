@@ -130,8 +130,8 @@ export default function DashboardComp() {
           </div>
           <Table hoverable>
             <Table.Head>
-              <Table.HeadCell>User image</Table.HeadCell>
-              <Table.HeadCell>Username</Table.HeadCell>
+              <Table.HeadCell>Аватар</Table.HeadCell>
+              <Table.HeadCell>Имя</Table.HeadCell>
             </Table.Head>
             {users &&
               users.map((user) => (
@@ -159,8 +159,8 @@ export default function DashboardComp() {
           </div>
           <Table hoverable>
             <Table.Head>
-              <Table.HeadCell>Comment content</Table.HeadCell>
-              <Table.HeadCell>Likes</Table.HeadCell>
+              <Table.HeadCell>Комментарий</Table.HeadCell>
+              <Table.HeadCell>Лайки</Table.HeadCell>
             </Table.Head>
             {comments &&
               comments.map((comment) => (
@@ -184,9 +184,9 @@ export default function DashboardComp() {
           </div>
           <Table hoverable>
             <Table.Head>
-              <Table.HeadCell>Post image</Table.HeadCell>
-              <Table.HeadCell>Post Title</Table.HeadCell>
-              <Table.HeadCell>Category</Table.HeadCell>
+              <Table.HeadCell>Изображение</Table.HeadCell>
+              <Table.HeadCell>Заголовок</Table.HeadCell>
+              <Table.HeadCell>Категория</Table.HeadCell>
             </Table.Head>
             {posts &&
               posts.map((post) => (

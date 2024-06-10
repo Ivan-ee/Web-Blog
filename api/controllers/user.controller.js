@@ -13,7 +13,7 @@ const UserController = {
                 return next(errorHandler(404, 'Пользователь не найден'));
             }
 
-            const {password, ...data} = user;
+            const {password, ...data} = user._doc;
 
             res.status(200).json(data);
         } catch (error) {
@@ -32,9 +32,9 @@ const UserController = {
                 return next(errorHandler(400, 'Имя не должно содержать пробелы'));
             }
 
-            if (!req.body.username.match(/^[a-zA-Z0-9]+$/)) {
+            if (!req.body.username.match(/^[a-zA-Zа-яА-Я0-9]+$/)) {
                 return next(
-                    errorHandler(400, 'Имя должно содержать только буквы и цифры')
+                    errorHandler(400, 'Имя должно содержать только буквы, цифры и русские буквы')
                 );
             }
         }
@@ -52,7 +52,7 @@ const UserController = {
                 },
                 {new: true}
             );
-            const {password, ...data} = updatedUser;
+            const {password, ...data} = updatedUser._doc;
             res.status(200).json(data);
         } catch (error) {
             next(error);
@@ -70,7 +70,7 @@ const UserController = {
                 .limit(limit);
 
             const usersWithoutPassword = users.map((user) => {
-                const {password, ...data} = user;
+                const {password, ...data} = user._doc;
                 return data;
             });
 

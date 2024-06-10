@@ -25,7 +25,7 @@ export default function CreatePost() {
     const handleUpdloadImage = async () => {
         try {
             if (!file) {
-                setImageUploadError('Please select an image');
+                setImageUploadError('Пожалуйста выберите изображение');
                 return;
             }
             setImageUploadError(null);
@@ -41,7 +41,7 @@ export default function CreatePost() {
                     setImageUploadProgress(progress.toFixed(0));
                 },
                 (error) => {
-                    setImageUploadError('Image upload failed');
+                    setImageUploadError('Ошибка загрузки фото');
                     setImageUploadProgress(null);
                 },
                 () => {
@@ -53,7 +53,7 @@ export default function CreatePost() {
                 }
             );
         } catch (error) {
-            setImageUploadError('Image upload failed');
+            setImageUploadError('Ошибка загрузки фото');
             setImageUploadProgress(null);
             console.log(error);
         }
@@ -79,7 +79,7 @@ export default function CreatePost() {
                 navigate(`/post/${data.slug}`);
             }
         } catch (error) {
-            setPublishError('Something went wrong');
+            setPublishError('Что-то пошло не так');
         }
     };
     return (

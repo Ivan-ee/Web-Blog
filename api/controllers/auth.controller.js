@@ -56,7 +56,7 @@ const AuthController = {
                 JWT_SECRET
             );
 
-            const {password: pass, ...data} = validUser;
+            const {password: pass, ...data} = validUser._doc;
 
             res
                 .status(200)
@@ -77,13 +77,13 @@ const AuthController = {
                     {id: user._id, isAdmin: user.isAdmin},
                     JWT_SECRET
                 );
-                const {password, ...rest} = user;
+                const {password, ...data} = user._doc;
                 res
                     .status(200)
                     .cookie('access_token', token, {
                         httpOnly: true,
                     })
-                    .json(rest);
+                    .json(data);
             } else {
                 const generatedPassword =
                     Math.random().toString(36).slice(-8) +
@@ -102,13 +102,13 @@ const AuthController = {
                     {id: newUser._id, isAdmin: newUser.isAdmin},
                     JWT_SECRET
                 );
-                const {password, ...rest} = newUser._doc;
+                const {password, ...data} = newUser._doc;
                 res
                     .status(200)
                     .cookie('access_token', token, {
                         httpOnly: true,
                     })
-                    .json(rest);
+                    .json(data);
             }
         } catch (error) {
             next(error);

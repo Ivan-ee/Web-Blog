@@ -67,7 +67,7 @@ export default function DashProfile() {
             },
             () => {
                 setImageFileUploadError(
-                    'Could not upload image (File must be less than 2MB)'
+                    'Допустимый максимум загрузки изображения 2мб'
                 );
                 setImageFileUploadProgress(null);
                 setImageFile(null);
@@ -93,11 +93,11 @@ export default function DashProfile() {
         setUpdateUserError(null);
         setUpdateUserSuccess(null);
         if (Object.keys(formData).length === 0) {
-            setUpdateUserError('No changes made');
+            setUpdateUserError('Ничего не меняйте');
             return;
         }
         if (imageFileUploading) {
-            setUpdateUserError('Please wait for image to upload');
+            setUpdateUserError('Подождите загрузки изображения');
             return;
         }
         try {
@@ -115,7 +115,7 @@ export default function DashProfile() {
                 setUpdateUserError(data.message);
             } else {
                 dispatch(updateSuccess(data));
-                setUpdateUserSuccess("User's profile updated successfully");
+                setUpdateUserSuccess("Пользователь обновлен успешно");
             }
         } catch (error) {
             dispatch(updateFailure(error.message));
