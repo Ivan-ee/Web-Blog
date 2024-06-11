@@ -61,6 +61,8 @@ const PostController = {
                 createdAt: {$gte: oneMonthAgo},
             });
 
+            console.log(posts)
+
             res.status(200).json({
                 posts,
                 totalPosts,
